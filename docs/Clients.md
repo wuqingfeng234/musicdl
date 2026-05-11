@@ -49,6 +49,90 @@ BilibiliMusicClient requires no additional CLI tools such as ffmpeg or N_m3u8DL-
   music_client.startcmdui()
   ```
 
+#### BodianMusicClient (Built-in Premium Account)
+
+[Bodian Music](https://bodian.kuwo.cn/) is a streamlined QQ Music app offering over 100 million licensed songs, one-tap listening, personalized recommendations, scene-based radio, customizable players, and immersive music backgrounds.
+
+BodianMusicClient supports downloading music from the platform mentioned above.
+
+BodianMusicClient requires no additional command-line tools such as ffmpeg or N_m3u8DL-RE, just install it with pip install musicdl and start using it right away.
+
+(1) Command-Line Usage
+
+- Basic usage for song search and download, without login cookies:
+
+  `musicdl -m BodianMusicClient`
+
+- Simple usage for searching and downloading songs, with login cookies:
+
+  `musicdl -m BodianMusicClient -i "{'BodianMusicClient': {'default_search_cookies': 'YOUR_COOKIES'}}"`
+  
+  Please be aware that BodianMusicClient only accepts VIP membership cookies in the following format:
+  
+  `default_search_cookies = {"uid": "xxx", "token": "xxx", "dev_id": "xxx-xxx-xxx-xxx-xxx"}`
+  
+  The `uid`, `token`, and `dev_id` can be obtained by packet capturing the Bodian Music desktop client or mobile app.
+
+- Basic usage for playlist parsing and downloading, without login cookies:
+
+  `musicdl -p "https://h5app.kuwo.cn/m/bodian/collection.html?uid=45780003&playlistId=86749638&source=5&owerId=" -m BodianMusicClient`
+
+- Simple usage for playlist parsing and downloading, with login cookies:
+  
+  `musicdl -p "https://h5app.kuwo.cn/m/bodian/collection.html?uid=45780003&playlistId=86749638&source=5&owerId=" -m BodianMusicClient -i "{'BodianMusicClient': {'default_parse_cookies': 'YOUR_COOKIES'}}"`
+
+(2) Invoke It in Python
+
+- Basic usage for song search and download, without login cookies:
+
+  ```python
+  from musicdl import musicdl
+
+  music_client = musicdl.MusicClient(music_sources=['BodianMusicClient'])
+  music_client.startcmdui()
+  ```
+
+- Simple usage for searching and downloading songs, with login cookies:
+
+  ```python
+  from musicdl import musicdl
+  
+  your_vip_cookies_with_str_or_dict_format = ''
+  init_music_clients_cfg = {
+    'BodianMusicClient': {
+        'default_search_cookies': your_vip_cookies_with_str_or_dict_format,
+    }
+  }
+  music_client = musicdl.MusicClient(music_sources=['BodianMusicClient'], init_music_clients_cfg=init_music_clients_cfg)
+  music_client.startcmdui()
+  ```
+
+- Basic usage for playlist parsing and downloading, without login cookies:
+
+  ```python
+  from musicdl import musicdl
+
+  music_client = musicdl.MusicClient(music_sources=['BodianMusicClient'])
+  song_infos = music_client.parseplaylist("https://h5app.kuwo.cn/m/bodian/collection.html?uid=45780003&playlistId=86749638&source=5&owerId=")
+  music_client.download(song_infos=song_infos)
+  ```
+
+- Simple usage for playlist parsing and downloading, with login cookies:
+
+  ```python
+  from musicdl import musicdl
+  
+  your_vip_cookies_with_str_or_dict_format = ''
+  init_music_clients_cfg = {
+    'BodianMusicClient': {
+        'default_parse_cookies': your_vip_cookies_with_str_or_dict_format,
+    }
+  }
+  music_client = musicdl.MusicClient(music_sources=['BodianMusicClient'], init_music_clients_cfg=init_music_clients_cfg)
+  song_infos = music_client.parseplaylist("https://h5app.kuwo.cn/m/bodian/collection.html?uid=45780003&playlistId=86749638&source=5&owerId=")
+  music_client.download(song_infos=song_infos)
+  ```
+
 #### FiveSingMusicClient
 
 [5SING Music](https://5sing.kugou.com/index.html) is a KuGou-affiliated online music platform where users can upload and discover original songs, covers, instrumentals, playlists, videos, and independent musicians.
