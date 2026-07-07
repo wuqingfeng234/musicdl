@@ -2427,31 +2427,6 @@ XiaoBaiMusicClient does not depend on external command-line tools such as ffmpeg
 
 ## Unofficial Download Sites / Scrapers
 
-#### AlgerMusicClient
-
-[Alger Music](http://music.alger.fun/#/) is a clean and modern web-based music player for searching, streaming, and enjoying music online, with music sources provided by NetEase Cloud Music.
-
-When downloading music from Alger Music, AlgerMusicClient is the recommended tool.
-
-No additional CLI tools such as ffmpeg or N_m3u8DL-RE are required, just run pip install musicdl and start using AlgerMusicClient right away.
-
-(1) Command-Line Usage
-
-- Search for and Download Playable Music Files from Websites
-
-  `musicdl -m AlgerMusicClient`
-
-(2) Invoke It in Python
-
-- Search for and Download Playable Music Files from Websites
-
-  ```python
-  from musicdl import musicdl
-
-  music_client = musicdl.MusicClient(music_sources=['AlgerMusicClient'])
-  music_client.startcmdui()
-  ```
-
 #### BuguyyMusicClient
 
 [Buguyy](https://buguyy.top/) is an online music platform that lets users browse, stream, and download songs, with a focus on popular and curated tracks.
@@ -2701,48 +2676,6 @@ There is no need to set up external command-line tools like ffmpeg or N_m3u8DL-R
   from musicdl import musicdl
 
   music_client = musicdl.MusicClient(music_sources=['HTQYYMusicClient'])
-  music_client.startcmdui()
-  ```
-
-#### JCPOOMusicClient
-
-[jcpoo.cn](https://www.jcpoo.cn/) is a music download website that offers free MP3 and lossless tracks, covering trending songs, classics, DJ music, and both Chinese and international releases.
-
-You can download tracks from the platform above via JCPOOMusicClient.
-
-To use JCPOOMusicClient, you do not need to install any additional CLI tools such as ffmpeg or N_m3u8DL-RE. Simply install musicdl via pip and start using it immediately.
-
-(1) Command-Line Usage
-
-- Search for and Download Playable Music Files from Websites
-
-  `musicdl -m JCPOOMusicClient`
-
-- Configure Quark Drive Cookies to Search for and Download Higher-Quality Music Files
-
-  `musicdl -m JCPOOMusicClient -i "{'JCPOOMusicClient': {'quark_parser_config': {'cookies': 'Your Quark Drive Login Cookies'}}}"`
-
-(2) Invoke It in Python
-
-- Search for and Download Playable Music Files from Websites
-
-  ```python
-  from musicdl import musicdl
-
-  music_client = musicdl.MusicClient(music_sources=['JCPOOMusicClient'])
-  music_client.startcmdui()
-  ```
-
-- Configure Quark Drive Cookies to Search for and Download Higher-Quality Music Files
-
-  ```python
-  from musicdl import musicdl
-  
-  your_quark_drive_login_cookies_with_str_or_dict_format = ''
-  init_music_clients_cfg = {
-    'JCPOOMusicClient': {'quark_parser_config': {'cookies': your_quark_drive_login_cookies_with_str_or_dict_format}},
-  }
-  music_client = musicdl.MusicClient(music_sources=['JCPOOMusicClient'], init_music_clients_cfg=init_music_clients_cfg)
   music_client.startcmdui()
   ```
 
